@@ -1,6 +1,5 @@
 import { myAxios } from './../../app/store';
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { Task } from './type';
 
 export const getTasksApi = createAsyncThunk(
     "get tasks",

@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
 import { getTasksApi } from "./taskAPI";
-import { Task } from "./type";
+import { Task } from "../../type";
 
 const initialState: { tasks: Task[] } = {
   tasks: [],

@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 export const Menu: React.FC = (): JSX.Element => {
   return (
-    <div>
+    <div className="nav">
       <nav>
         <ul>
           <li>

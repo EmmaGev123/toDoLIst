@@ -2,8 +2,13 @@ const { ToDoList } = require("../model");
 
 class ToDoListController {
     static async toDoList(req, res) {
-        const list = await ToDoList.findAll()
-        res.send(list)
+        try {
+            const tasks = await ToDoList.findAndCountAll({ });
+            res.json(tasks); 
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ error: "Internal Server Error" });
+        }
     }
 
     static async createToDoList(req, res) {
@@ -11,6 +16,7 @@ class ToDoListController {
         const list = await ToDoList.create({name, description , done:0})
         res.send(list)
     }
+    
     static async toDoListById(req, res) {
         const list = await ToDoList.findOne({ where: { id: req.params.id } });
         if (list) {
@@ -28,7 +34,7 @@ class ToDoListController {
         });
         if (list) {
             await ToDoList.update({ done },{where:{id:req.params.id}});
-            return res.send({ message: "text-decoration:line-through" })  
+            return   
         } 
     }
 
